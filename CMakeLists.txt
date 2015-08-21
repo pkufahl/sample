@@ -3,5 +3,5 @@ project(sample)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES sample.cpp)
-add_executable(sample ${SOURCE_FILES})
+set(SOURCE_FILES sample.cpp WordCounter.cpp RegisterEntries.cpp StringVector.cpp StringVector.h TextQuerySTL.cpp TextQuerySTL.h TextQueryAlloc.cpp TextQueryAlloc.h)
+add_executable(sample ${SOURCE_FILES} Message.cpp Message.h)

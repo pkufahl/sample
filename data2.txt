@@ -1,0 +1,47 @@
+Switch Basics: Moving from Windows Explorer to the Finder
+Learn about the Finder and its Windows Explorer similarities.
+
+Although it may feel like you're entering a brand new world with your Mac, you'll be happy to know that Finder has some familiar similarities to Windows Explorer. For example, you still have a desktop and windows, you still access many functions from menus, you can still use keyboard shortcuts to accomplish tasks quickly, and more.
+In Windows you used Windows Explorer to manage your files. In Mac OS X, you use the Finder to manage your files. You can search for files, copy files, move files, or delete files. You can also see file server connections, inserted DVDs, and USB thumb drives.
+Elements of the Mac OS X desktop and Finder, and their Windows Explorer equivalents
+Here is a sample Mac desktop and Finder window (in Cover Flow view mode), labeled so we can compare it to Windows. Some of the following Mac OS X features may not be available in Windows.
+
+Apple () menu - Similar to the Start menu in Windows; used to access functions such as Software Update (equivalent to Windows Update), System Preferences (equivalent to Control Panel), Sleep, Log Out, and Shut Down.
+Menu bar - This is always at the top of your screen. It contains the Apple menu, active application menu, menu bar extras and the Spotlight icon. The Finder menu has items such as Finder Preferences, Services, and Secure Empty Trash.
+Finder window close, minimize and zoom buttons–just like in Windows but on the left. Note: Closing all application windows in Mac OS X does not always quit the application as it does in Windows. In Mac OS X every application menu has a Quit option that can also be invoked by using the Command-Q key combination.
+Finder window View buttons Equivalent to the options contained in the View menu of Windows Explorer.
+Icon view - Similar to Windows Icons view mode, used to display the contents of your folder as a series of icons. Also you can "hover" over icons for multipage documents or QuickTime movies to get a thumb nail preview of its content.
+List view - Similar to Windows Details view mode, used to display your folder in a spreadsheet-style manner. Each folder can be expanded by clicking on the disclosure triangle just to the left of the folder. You can easily sort by file name, date modified, and so forth. Choose Show View Options from the View menu to add / remove attribute columns. You can change the sorting from ascending order to descending order and back again by clicking on the attribute column title.
+Column view - Used to display the hierarchy of your hard disk where each column represents a folder.
+Cover Flow view - Used to display the contents of your folder just like the Cover Flow used in iTunes. You can see live previews of images, documents, and movies, and can thumb through documents and movies.
+Action Menu - Similar to right clicking an item in Windows Explorer, it will give you quick access to Finder functions for highlighted items, such as Get Info, Quick Look, Move to Trash, and Services.
+Item Arrangement - Similar to Group By, Stack By in Windows Explorer, it will group the items in a folder by a certain criteria, such as Name, Kind, Application, Date Last Opened, Date Added, and more.
+Search Field - Similar to Windows Search, start typing a word or phrase and Spotlight will search your Mac for any matches.
+Spotlight icon - Similar to Windows Search, click it to bring up the Spotlight search field, where you can search for anything on your Mac.
+Back / Forward buttons - Just like in Windows Explorer, as you move to different places in the Finder window, you can use the back button to return one step back and the forward button to go forward.
+Sidebar - Similar to the Task Pane in Windows Explorer, items are grouped into categories: Favorites, Shared, and Devices. The Favorites section contains quick access to your desktop, Applications, downloads, and Documents. The Shared and Devices sections display whatever is connected to your Mac, such as a hard disk, iDisk, network share points, an SD memory card, or DVDs.
+Cover Flow content - Shows you a live preview of your files, where you can page through a document or watch a QuickTime movie.
+The Finder application icon -  Similar to Windows Explorer, click it to bring the Finder to the foreground or open a Finder window if none are already opened.
+The Dock - Similar to the Windows Taskbar, it has quick access to the Finder and your most frequently used applications, folders, and files. With a single click the application, folder, or file opens.
+Trash - Similar to the Recycle Bin, deleted items are kept here until you empty the Trash. You can also eject DVD's, SD memory cards, or external drives connected to your Mac by dragging them to the trash (discs will physically eject when you do this, other devices can be disconnected after doing this).
+Learn more
+See also: On Windows, I used to… for a matrix of Windows functions and their Mac OS X equivalent.
+Information about products not manufactured by Apple, or independent websites not controlled or tested by Apple, is provided without recommendation or endorsement. Apple assumes no responsibility with regard to the selection, performance, or use of third-party websites or products. Apple makes no representations regarding third-party website accuracy or reliability. Risks are inherent in the use of the Internet. Contact the vendor for additional information. Other company and product names may be trademarks of their respective owners.
+Last Modified: Feb 13, 2015
+Helpful?Yes No
+50% of people found this helpful.
+Additional Product Support Information
+
+ Mac OS X 10.6 OS X Lion
+Start a Discussion
+in Apple Support Communities
+
+
+See all questions on this article See all questions I have asked
+Contact Apple Support
+
+Need more help? Save time by starting your support request online and we'll connect you to an expert.
+Get started
+Apple
+Support Shop the Apple Online Store (1-800-MY-APPLE), visit an Apple Retail Store , or find a reseller . Apple Info  Site Map  Hot News  RSS Feeds  Contact Us Copyright © 2015 Apple Inc. All rights reserved. Terms of Use Updated Privacy Policy Use of Cookies
+United States (English)
