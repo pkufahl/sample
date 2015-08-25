@@ -3,6 +3,7 @@
 //
 
 #include <utility>
+#include <algorithm>
 #include "StringVector.h"
 
 
@@ -148,4 +149,82 @@ void StringVector::allocate_and_move(size_t newCapacity) {
 	_elements = newData;
 	_first_free = dest;
 	_cap = _elements + newCapacity;
+}
+
+StringVector::StringVector(StringVector &&sv) noexcept
+	: _elements(sv._elements),
+	  _first_free(sv._first_free),
+	  _cap(sv._cap)
+{
+	// move ctor for StringVector
+	// initializer list: new members take over the resources in sv
+
+	// leave sv in a state where it is safe to call the dtor
+	sv._elements = sv._first_free = sv._cap = nullptr;
+}
+
+StringVector &StringVector::operator=(StringVector &&rhs) noexcept {
+
+	// move assignment operator for StringVector
+	// first, directly test for self-assignment
+	if (this != &rhs)
+	{
+		free();         // free the existing elements
+
+		// take over resources
+		_elements = rhs._elements;
+		_first_free = rhs._first_free;
+		_cap = rhs._cap;
+
+		// leave rhs in a sata where it is safe to call the dtor
+		rhs._elements = rhs._first_free = rhs._cap = nullptr;
+	}
+
+	return *this;
+}
+
+bool operator==(const StringVector& lhs, const StringVector& rhs)
+{
+	return (lhs.size() == rhs.size()) && std::equal(lhs._elements, lhs._first_free, rhs._elements);
+}
+
+bool operator!=(const StringVector& lhs, const StringVector& rhs)
+{
+	return !(lhs == rhs);
+}
+
+bool operator<(const StringVector &lhs, const StringVector &rhs) {
+
+	return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+}
+
+bool operator>(const StringVector &lhs, const StringVector &rhs) {
+
+	return rhs > lhs;
+}
+
+bool operator<=(const StringVector &lhs, const StringVector &rhs) {
+
+	return !(rhs > lhs);
+}
+
+bool operator>=(const StringVector &lhs, const StringVector &rhs) {
+
+	return !(lhs < rhs);
+}
+
+StringVector &StringVector::operator=(std::initializer_list<std::string> rhs) {
+
+	// assignment operator using an initializer list
+	// uses allocate_and_copy() to allocate space and copy elements from the given range
+	auto data = allocate_and_copy(rhs.begin(), rhs.end());
+
+	// destroy the elements in this object, free the space
+	free();
+
+	// update data members to point to the new space
+	_elements = data.first;
+	_first_free = _cap = data.second;
+
+	return *this;
 }

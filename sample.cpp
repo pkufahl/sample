@@ -8,8 +8,20 @@ int main()
 {
 	// test_word_counter();
 	// test_messages();
+	// test_queries();
+	// test_simplestring();
 
-	test_queries();
+	std::string request("Sample Request");
+	RevenueData samp = request;
+
+	std::cout << samp << std::endl;
+
+	/*
+	SimpleString str("i'm done");
+	std::cout << str << std::endl;
+	*/
+
+
 	return 0;
 }
 
@@ -228,9 +240,63 @@ void run_both_queries(std::ifstream &infile1, std::ifstream &infile2) {
 
 	}
 
-
-
-
 	std::cout << "done" << std::endl;
+
+}
+
+void test_simplestring() {
+
+	char text[] = "world";
+
+	// SimpleString s0;
+	SimpleString s1("hello");
+	SimpleString s2;
+	{
+		SimpleString s0;
+		s2 = std::move(s0);
+		std::cout << "s2 assigned to move:s0" << std::endl;
+	}
+
+	SimpleString s3 = s1;
+	SimpleString s4(text);
+	s2 = s1;
+
+	if (s2 == s1)
+		std::cout << "s2 == s1" << std::endl;
+
+	foo(s1);
+	bar(s1);
+	foo("temporary");
+	bar("temporary");
+	SimpleString s5 = baz();
+
+	std::vector<SimpleString> vec;
+
+	vec.reserve(8);
+	// vec.push_back(std::move(s0));
+	vec.push_back(s1);
+	vec.push_back(s2);
+	vec.push_back(s3);
+	vec.push_back(s4);
+	vec.push_back(s5);
+	vec.push_back(baz());
+	vec.push_back("good job");
+
+	for (const auto &str : vec)
+	{
+		std::cout << str.c_string() << std::endl;
+	}
+
+	std::cout << "input a string: ";
+	SimpleString s6;
+	std::cin >> s6;
+	std::cout << s6 << std::endl;
+
+	if (s6 > s1)
+		std::cout << "s6 > s1" << std::endl;
+	else if (s6 < s1)
+		std::cout << "s6 < s1" << std::endl;
+
+	return;
 
 }

@@ -2,6 +2,8 @@
 // Created by Peter Kufahl on 8/19/15.
 //
 
+
+
 #include "Message.h"
 
 void swap(Message& lhs, Message& rhs)
@@ -141,3 +143,60 @@ Folder &Folder::operator=(const Folder &folder) {
 	return *this;
 }
 
+void Message::move_folders(Message *m) {
+
+	// worker bee for move operations
+	// 1. moves the _folders set
+	//      std::move() means it calls the move assignment, noit the copy assignment
+	// 2. iterates through _folders, removing the ptr to the original Message
+	//      and adding a ptr to the new Message
+	// *  since inserting an element into a set might throw an exception, we cannot
+	//     qualify this method with noexcept
+	// 3. after the move, we know m._folders is invalid, but we don't know what its
+	//     contents are. Therefore, we call clear() on m._folders to make it safe to
+	//     destroy
+
+	_folders = std::move(m->_folders);      // this uses the set move assignment
+
+	// for each Folder in _folders
+	for (auto f : _folders)
+	{
+		f->remove_message(m);               // remove the old Message from the Folder
+		f->add_message(this);               // add this Message to that Folder
+	}
+
+	// make sure that destroying m is harmless
+	m->_folders.clear();
+}
+
+Message::Message(Message &&m)
+	: _contents(std::move(m._contents))
+{
+	// move ctor for Message
+
+	// move _folders and update the Folder pointers
+	move_folders(&m);
+}
+
+Message &Message::operator=(Message &&rhs) {
+
+	// move assignment operator for Message
+
+	// direct check for self-assignment
+	if(this != &rhs)
+	{
+		remove_from_folders();
+		_contents = std::move(rhs._contents);
+		move_folders(&rhs);
+	}
+
+	return *this;
+}
+
+Folder &Folder::operator=(Folder &&rhs) {
+
+	remove_from_message();
+	_messages = std::move(rhs._messages);
+
+	return *this;
+}

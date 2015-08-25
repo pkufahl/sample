@@ -24,6 +24,7 @@
 #include <string>
 #include <set>
 #include <iostream>
+#include <utility>
 
 class Folder;
 
@@ -39,6 +40,9 @@ public:
 	Message(const Message&);
 	Message& operator=(const Message&);
 	~Message();
+
+	Message(Message&& m);
+	Message& operator=(Message&& rhs);
 
 	void save(Folder&);
 	void remove(Folder&);
@@ -63,6 +67,9 @@ private:
 
 	void add_folder(Folder* f) { _folders.insert(f); }
 	void remove_folder(Folder *f) { _folders.erase(f); }
+
+	// utility function for move operations
+	void move_folders(Message* m);
 };
 
 class Folder {
@@ -75,6 +82,9 @@ public:
 	Folder(const Folder&);
 	Folder& operator=(const Folder&);
 	~Folder();
+
+	Folder(Folder &&f) : _messages(std::move(f._messages)) {}
+	Folder& operator=(Folder &&);
 
 	void add_to_message(const Folder&);
 	void remove_from_message();

@@ -29,7 +29,15 @@
 #include <string>
 #include <initializer_list>
 
+
 class StringVector {
+	friend bool operator==(const StringVector& lhs, const StringVector& rhs);
+	friend bool operator!=(const StringVector& lhs, const StringVector& rhs);
+	friend bool operator< (const StringVector& lhs, const StringVector& rhs);
+	friend bool operator> (const StringVector& lhs, const StringVector& rhs);
+	friend bool operator<=(const StringVector& lhs, const StringVector& rhs);
+	friend bool operator>=(const StringVector& lhs, const StringVector& rhs);
+
 public:
 	StringVector() :                                    // _alloc is default initialized
 	 _elements(nullptr),
@@ -41,10 +49,15 @@ public:
 	StringVector(std::initializer_list<std::string>);
 	StringVector& operator=(const StringVector&);
 
+	StringVector(StringVector&&) noexcept;              // move ctor
+	StringVector& operator=(StringVector&&) noexcept;   // move assignment operator
+
 	~StringVector()
 	{
 		free();
 	}
+
+	StringVector& operator=(std::initializer_list<std::string> rhs);
 
 	void push_back(const std::string&);                 // copy an element
 
@@ -97,5 +110,11 @@ private:
 	std::string *_cap;           // ptr to one location past the end of the array
 };
 
+bool operator==(const StringVector& lhs, const StringVector& rhs);
+bool operator!=(const StringVector& lhs, const StringVector& rhs);
+bool operator< (const StringVector& lhs, const StringVector& rhs);
+bool operator> (const StringVector& lhs, const StringVector& rhs);
+bool operator<=(const StringVector& lhs, const StringVector& rhs);
+bool operator>=(const StringVector& lhs, const StringVector& rhs);
 
 #endif //SAMPLE_STRINGVECTOR_H
