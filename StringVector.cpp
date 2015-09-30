@@ -140,6 +140,7 @@ void StringVector::allocate_and_move(size_t newCapacity) {
 	// move the data from the old memory to the new
 	auto dest = newData;                                // ptr to the next free pos in new array
 	auto elem = _elements;                              // ptr to the next element in old array
+
 	for (size_t i = 0; i != size(); ++i)
 		_alloc.construct(dest++, std::move(*elem++));
 

@@ -4,7 +4,7 @@
 // StringVector is a simplified "vector" of strings that manages its own memory allocation
 //
 // the vector<> class stores its elements in contiguous storage, and to obtain performance it preallocates
-//  enough storage to hold elements than are needed. Each vector member that adds elements checks whether there
+//  enough storage to hold more elements than are needed. Each vector member that adds elements checks whether there
 //  is enough space available for another element. If there isn't enough space left, then the vector gets
 //  reallocated: the vector obtains new space, moves the existing elements into that space, frees the old
 //  space, and adds the new element.
@@ -58,6 +58,10 @@ public:
 	}
 
 	StringVector& operator=(std::initializer_list<std::string> rhs);
+
+    std::string& operator[](std::size_t n) { return _elements[n]; }
+    const std::string& operator[](std::size_t n) const { return _elements[n]; }
+
 
 	void push_back(const std::string&);                 // copy an element
 

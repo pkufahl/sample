@@ -32,6 +32,9 @@ public:
 
 	~SimpleString() { free(); }
 
+	char& operator[] (size_t n) { return _first_element[n]; }
+	const char& operator[] (size_t n) const { return _first_element[n]; }
+
 	void push_back(const char);                         // added for the >> operator
 
 	void reserve(size_t size);

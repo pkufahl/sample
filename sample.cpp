@@ -10,17 +10,29 @@ int main()
 	// test_messages();
 	// test_queries();
 	// test_simplestring();
-
+	/*
 	std::string request("Sample Request");
 	RevenueData samp = request;
 
 	std::cout << samp << std::endl;
-
+	*/
 	/*
 	SimpleString str("i'm done");
 	std::cout << str << std::endl;
 	*/
 
+	// test_stringvec_initlist();
+	// test_subscripts();
+	// test_incs_decs();
+	// test_InputFunctor1();
+	// test_InputFunctor1_vec();
+	// test_IsEqualTo();
+	// test_IsInRange("data.txt");
+	// test_Biggies("data.txt");
+	// test_FunctorCalc();
+	// test_ConvertRevenue();
+
+	test_oop_quote();
 
 	return 0;
 }
@@ -299,4 +311,144 @@ void test_simplestring() {
 
 	return;
 
+}
+
+void test_stringvec_initlist() {
+
+	StringVector vec;
+	vec.reserve(6);
+	std::cout << "capacity(reserve to 6): " << vec.capacity() << std::endl;
+
+	vec.reserve(4);
+	std::cout << "capacity(reserve to 4): " << vec.capacity() << std::endl;
+
+	vec.push_back("hello");
+	vec.push_back("world");
+
+	vec.resize(4);
+
+	for (auto i = vec.begin(); i != vec.end(); ++i)
+		std::cout << *i << std::endl;
+	std::cout << "-EOF-" << std::endl;
+
+	vec.resize(1);
+
+	for (auto i = vec.begin(); i != vec.end(); ++i)
+		std::cout << *i << std::endl;
+	std::cout << "-EOF-" << std::endl;
+
+	StringVector vec_list{ "hello", "world", "pezy" };
+
+	for (auto i = vec_list.begin(); i != vec_list.end(); ++i)
+		std::cout << *i << " ";
+	std::cout << std::endl;
+
+	// Test operator==
+
+	const StringVector const_vec_list = { "hello", "world", "pezy" };
+	if (vec_list == const_vec_list)
+		for (const auto &str : const_vec_list)
+			std::cout << str << " ";
+	std::cout << std::endl;
+
+	// Test operator<
+	const StringVector const_vec_list_small = { "hello", "pezy", "ok" };
+	std::cout << (const_vec_list_small < const_vec_list) << std::endl;
+
+}
+
+void test_subscripts()
+{
+	char text[] = "world";
+
+	// SimpleString s0;
+	SimpleString s1("hello");
+	SimpleString s2;
+	{
+		SimpleString s0;
+		s2 = std::move(s0);
+		std::cout << "s2 assigned to move:s0" << std::endl;
+	}
+
+	SimpleString s3 = s1;
+	SimpleString s4(text);
+	s2 = s1;
+
+	if (s2 == s1)
+		std::cout << "s2 == s1" << std::endl;
+
+	foo(s1);
+	bar(s1);
+	foo("temporary");
+	bar("temporary");
+	SimpleString s5 = baz();
+
+	std::vector<SimpleString> vec;
+
+	vec.reserve(8);
+	// vec.push_back(std::move(s0));
+	vec.push_back(s1);
+	vec.push_back(s2);
+	vec.push_back(s3);
+	vec.push_back(s4);
+	vec.push_back(s5);
+	vec.push_back(baz());
+	vec.push_back("good job");
+
+	for (const auto &str : vec)
+	{
+		std::cout << str.c_string() << std::endl;
+	}
+
+	std::cout << "input a string: ";
+	SimpleString s6;
+	std::cin >> s6;
+	std::cout << s6 << std::endl;
+
+	if (s6 > s1)
+		std::cout << "s6 > s1" << std::endl;
+	else if (s6 < s1)
+		std::cout << "s6 < s1" << std::endl;
+
+	std::cout << "s5[2] is " << s5[2] << std::endl;
+
+
+	return;
+
+}
+
+void test_incs_decs()
+{
+	StringBlob sb1{"aaaargh", "b", "c"};
+	StringBlob sb2 = sb1;
+
+	sb2[2] = "b";
+
+	if (sb1 > sb2)
+	{
+		for (StringBlobPtr iter = sb1.begin(); iter < sb1.end(); ++iter)
+			std::cout << iter.dereference() << " ";
+
+		std::cout << std::endl;
+
+	}
+
+	ConstStringBlobPtr iter(sb2);
+	std::cout << (iter + 2).dereference() << std::endl;
+	std::cout << "size is: " << iter->size() << std::endl;
+}
+
+void test_ConvertRevenue()
+{
+	RevenueData rd("item-0000", 10000, 1.99);
+	std::cout << "As type RevenueData: " << rd << std::endl;
+	std::cout << "As type string: " << static_cast<std::string>(rd) << std::endl;
+	std::cout << "As type double: " << static_cast<double>(rd) << std::endl;
+
+}
+
+void test_oop_quote()
+{
+	OOP_Quote quote1("apples", 0.50);
+	print_total(std::cout, quote1, 1000);
 }

@@ -16,6 +16,10 @@
 #include "TextQueryAlloc.h"
 #include "SimpleString.h"
 #include "RevenueData.h"
+#include "StringBlob.h"
+#include "InputFunctor.h"
+#include "FunctorCalc.h"
+#include "OOP_Quote.h"
 
 void test_word_counter();
 void test_messages();
@@ -30,5 +34,13 @@ void foo(SimpleString x) { std::cout << x.c_string() << std::endl; }
 void bar(const SimpleString& x) { std::cout << x.c_string() << std::endl; }
 SimpleString baz() { SimpleString ret("world"); return ret; }
 
+void test_stringvec_initlist();
+void test_subscripts();
+void test_incs_decs();
+
+void test_FunctorCalc();
+void test_ConvertRevenue();
+
+void test_oop_quote();
 
 #endif //SAMPLE_SAMPLE_H

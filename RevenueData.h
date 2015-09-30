@@ -17,10 +17,10 @@ public:
 	friend bool operator==(const RevenueData& lhs, const RevenueData& rhs);         // equality
 	friend bool operator!=(const RevenueData& lhs, const RevenueData &rhs);         // inequality
 public:
-	RevenueData(const std::string& str, unsigned n, double p)
+	RevenueData(const std::string& str, unsigned n, double price)
 		: _itemID(str),
 		  _unitsSold(n),
-		  _revenue(n * p)
+		  _revenue(n * price)
 	{ }
 
 	RevenueData() : RevenueData("", 0, 0.0f) { }
@@ -29,6 +29,9 @@ public:
 
 	RevenueData& operator=(const std::string& rhs);     // assignment using string for _itemID
 	RevenueData& operator+=(const RevenueData& rhs);    // compound assignment
+
+	explicit operator std::string() const { return _itemID; }   // conversion to string: report item ID
+	explicit operator double() const { return _revenue; }       // conversion to double: report revenue total
 
 	std::string itemID() const { return _itemID; }
 
